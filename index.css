@@ -1,5 +1,5 @@
 .navigation {
-  background-color: darkgray;
+  background-color: lightgray;
   position: fixed;
   width: 20vw;
   height: 100vh;
@@ -17,13 +17,13 @@
 
 .nav-item {
   font-family: "Noto Serif KR", serif;
-  color: beige;
-  font-size: 2.5vw;
+  color: black;
+  font-size: 1.5vw;
   padding-top: 20px;
 }
 
 .nav-item:hover {
-  color: black;
+  color: beige;
 }
 
 @media (max-width: 750px) {
