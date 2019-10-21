@@ -1,1 +1,123 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>portfolio</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+    <script type="text/babel">
+      class NavLink extends React.Component {
+        render() {
+          return (
+            <a className="nav-item" href={`#${this.props.itemName}`}>
+              {this.props.itemName}
+            </a>
+          );
+        }
+      }
+      const Navigation = () => (
+        <nav className="navigation">
+          <img
+            className="avatar"
+            src="http://placehold.it/100x100"
+            alt="avatar"
+          />
+          <NavLink itemName="INTRO" />
+          <NavLink itemName="프로젝트1" />
+          <NavLink itemName="프로젝트2" />
+        </nav>
+      );
+      const Intro = () => (
+        <div className="section" id="INTRO">
+          <h1>woori's portfolio</h1>
+          <div>
+            <a href="mailto:skdlwn156@naver.com">email@email.com</a>
+            <p>hi woori</p>
+          </div>
+          <div>
+            <h2>경력</h2>
+            <p>프론트엔드</p>
+            <h2>자기소개</h2>
+            <p>hi~</p>
+          </div>
+        </div>
+      );
+      const Project = ({ name, time, summary, epilogue, resultsURL }) => (
+        <div className="section" id={name}>
+          <h1>{name}</h1>
+          <p>{time}</p>
+          <div>
+            <h2>개요</h2>
+            <p>{summary}</p>
+            <h2>후기</h2>
+            <p>{epilogue}</p>
+            <h2>결과</h2>
+            <div>
+              {resultsURL.map(url => (
+                <img src={url} alt="project result" />
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+
+      const projects = [
+        {
+          name: "프로젝트1",
+          time: "2019.04 ~ 2019.05",
+          summary: "이 프로젝트는 영국에서부터 시작되어...",
+          epilogue: "이 프로젝트를 시작한 사람을 가만두지 않겠다.",
+          resultsURL: [
+            "http://placehold.it/200x200",
+            "http://placehold.it/200x200",
+            "http://placehold.it/200x200",
+            "http://placehold.it/200x200"
+          ]
+        },
+        {
+          name: "프로젝트2",
+          time: "2019.04 ~ 2019.05",
+          summary: "이 프로젝트는 영국에서부터 시작되어...",
+          epilogue: "이 프로젝트를 시작한 사람을 가만두지 않겠다.",
+          resultsURL: [
+            "http://placehold.it/200x200",
+            "http://placehold.it/200x200",
+            "http://placehold.it/200x200",
+            "http://placehold.it/200x200"
+          ]
+        }
+      ];
+
+      const App = () => (
+        <div>
+          <Navigation />
+          <div className="main">
+            <div className="column-start">
+              <Intro />
+              <Project {...projects[0]} />
+              <Project {...projects[1]} />
+            </div>
+          </div>
+        </div>
+      );
+      ReactDOM.render(<App />, document.querySelector("#root"));
+    </script>
+  </body>
+</html>
